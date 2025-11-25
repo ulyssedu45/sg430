@@ -1,0 +1,54 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+if BOARD_SOPHOS_SG430_REV2 || BOARD_SOPHOS_SG450_REV2 || BOARD_SOPHOS_XG430_REV2 || BOARD_SOPHOS_XG450_REV2
+
+config BOARD_SPECIFIC_OPTIONS
+	def_bool y
+	select BOARD_ROMSIZE_KB_16384
+	select HAVE_ACPI_RESUME
+	select HAVE_ACPI_TABLES
+	select DRIVERS_OPTION_CFR_ENABLED if PAYLOAD_EDK2 && SMMSTORE
+	select INTEL_GMA_HAVE_VBT
+	select MAINBOARD_HAS_LIBGFXINIT
+	select SKYLAKE_SOC_PCH_H
+	select SOC_INTEL_KABYLAKE
+	select USE_LEGACY_8254_TIMER
+	#select IPMI_KCS
+	#select IPMI_KCS_ROMSTAGE
+	#select IPMI_OCP
+	select SUPERIO_NUVOTON_NCT6779D
+	select SOC_INTEL_COMMON_BLOCK_LPC_COMB_ENABLE
+
+config MAINBOARD_DIR
+	default "sophos/sg430r2"
+
+config MAINBOARD_PART_NUMBER
+	default "SG430 Rev 2" if BOARD_SOPHOS_SG430_REV2
+	default "SG450 Rev 2" if BOARD_SOPHOS_SG450_REV2
+	default "XG430 Rev 2" if BOARD_SOPHOS_XG430_REV2
+	default "XG450 Rev 2" if BOARD_SOPHOS_XG450_REV2
+
+config DIMM_MAX
+	int
+	default 2
+
+config DIMM_SPD_SIZE
+	int
+	default 512
+
+config BEEP_ON_BOOT
+	bool "Beep on successful boot"
+	default y
+	help
+	  Make the platform beep using the PC speaker in final coreboot phase.
+	  May serve as a useful indicator in headless mode that platform is
+	  properly booting.
+
+config BOARD_HAS_EZIO_LCD
+	bool "Enable EZIO LCD support"
+	default y
+	help
+	  Enable support for Portwell EZIO-100/300 LCD module
+	  connected via UART1.
+
+endif # BOARD_SOPHOS_SG310_SG330_REV2
