@@ -100,7 +100,7 @@ flashrom -p internal -w coreboot.rom
 ## 📁 Structure du Projet
 
 ```
-sg230r2/
+sg430r2/
 ├── bootblock.c         # Code du bootblock
 ├── ramstage.c          # Code du ramstage
 ├── romstage.c          # Code du romstage
@@ -166,7 +166,7 @@ Once coreboot is installed, future updates can be performed via flashrom from th
 - **ROM Chip**: SOIC-8
 - **ROM Protocol**: SPI
 - **ROM Size**: 16 MB (16384 KB)
-- **Superio**: Nuvoton NCT6779D
+- **Superio**: Nuvoton NCT6779D & Aspeed AST2400
 - **DIMM Max**: 2
 
 ## 🔧 Features
@@ -194,7 +194,7 @@ To configure and compile coreboot for the SG430/XG430/SG450/XG450 Rev 2, please 
 2. Copy the mainboard files into the coreboot tree:
 
 ```bash
-cp -r path/to/sg230r2 src/mainboard/sophos/
+cp -r path/to/sg430r2 src/mainboard/sophos/
 ```
 
 3. During configuration (`make menuconfig`), select:
@@ -237,7 +237,7 @@ flashrom -p internal -w coreboot.rom
 ## 📁 Project Structure
 
 ```
-sg230r2/
+sg430r2/
 ├── bootblock.c         # Bootblock code
 ├── ramstage.c          # Ramstage code
 ├── romstage.c          # Romstage code
